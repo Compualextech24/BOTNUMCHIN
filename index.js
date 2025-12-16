@@ -55,8 +55,9 @@ http.createServer(async (req, res) => {
 });
 
 // Configuración de Gemini
+// Configuración de Gemini
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 // ============================================================
 // CONFIGURACIÓN DEL BOT Y MENSAJES PROGRAMADOS
@@ -71,7 +72,7 @@ const COOLDOWN_SECONDS = 5;
 
 const NEWS_GROUP_ID = "120363347522191441@g.us";
 const NEWS_HOUR = 7;      
-const NEWS_MINUTE = 0;    
+const NEWS_MINUTE = 40;    
 
 let lastNewsSent = null;
 
@@ -225,5 +226,6 @@ async function connectToWhatsApp() {
         }
     });
 }
+
 
 connectToWhatsApp();
