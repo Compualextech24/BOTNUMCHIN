@@ -228,4 +228,18 @@ async function connectToWhatsApp() {
 }
 
 
+// ============================================================
+// PING AUTOMÁTICO PARA EVITAR QUE EL BOT SE DUERMA
+// ============================================================
+setInterval(() => {
+    // Nota: Reemplaza 'tu-app.koyeb.app' con tu URL real de Koyeb
+    const url = `http://${process.env.KOYEB_APP_NAME || 'tu-app.koyeb.app'}/qr`;
+    http.get(url, (res) => {
+        console.log(`📡 Auto-Ping enviado: Estado ${res.statusCode}`);
+    }).on('error', (err) => {
+        console.error("❌ Error en Auto-Ping:", err.message);
+    });
+}, 600000); // Se ejecuta cada 10 minutos
+
 connectToWhatsApp();
+
